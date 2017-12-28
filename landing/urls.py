@@ -19,5 +19,5 @@ from landing import views
 
 urlpatterns = [
     url(r'^landing', views.landing, name = 'landing'),
-    url(r'^egg',views.landing, name = 'easter_egg')
+    url(r'^egg',views.egg, name = 'easter_egg')
 ]
