@@ -9,7 +9,6 @@ def landing(request):
         print(form.cleaned_data)
         data = form.cleaned_data
         print (data['name'])
-
         new_form = form.save()
 
 

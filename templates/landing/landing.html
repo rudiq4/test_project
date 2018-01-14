@@ -18,11 +18,10 @@
                 <h1><i><p align="center">Для того щоб отримати лист - укажіть свій e-mail :</i></h1>
                     <div>
                         <form action="" method="post">{% csrf_token %}
-                            {{ form.as_p }}
+                            {{ form.as_p }}<!-- Кожна форма як окремий заголовок .as_p  -->
                             <div>
-                                <button type="submit" class="btn btn-primary">Відправити</button>
+                                <button type="submit" class="btn btn-primary">Відправити</button> <!-- Кнопка "Відправити"  в оформленні BootStrap  -->
                             </div>
-
                         </form>
                     </div>
             </div>
