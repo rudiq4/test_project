@@ -1,3 +1,37 @@
-body{
-    background-color: RGB(123, 197, 235);
+html,body{
+    height: 100%;
+    max-height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+.top-container{
+    padding-top: 10%;
+    color: white;
+}
+
+.general-container{
+    background: url(' ../img/background.jpg ') ;
+    height: 100%;
+}
+
+.general-container form label{
+    font-weight: 100;
+    color: white;
+}
+
+.title{
+    text-align: center;
+    color: white;
+    font-weight: 100;
+    line-height: 50px;
+}
+
+.btn-orange{
+    background-color: orange;
+    color: black;
+    border: none;
+}
+.btn-orange:hover{
+    background-color: #db9f0f;
+    color: magenta;
+    border: none;
 }

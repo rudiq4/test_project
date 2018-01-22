@@ -4,28 +4,43 @@
 <html lang="en">
 <head>
 
+
     <!--Bootstrap-->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400&amp;subset=cyrillic-ext" rel="stylesheet"> <!-- Кастомний шрифт -->
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}"> <!-- Підключаєм ксс -->
     <meta charset="UTF-8">
-    <title>Сверхяркие Лед-Лампочки</title>
+    <title>Назва сторінки</title>
+
+
+
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-lg-offset-4">
-                <h1><i><p align="center">Для того щоб отримати лист - укажіть свій e-mail :</i></h1>
-                    <div>
-                        <form action="" method="post">{% csrf_token %}
-                            {{ form.as_p }}<!-- Кожна форма як окремий заголовок .as_p  -->
-                            <div>
-                                <button type="submit" class="btn btn-primary">Відправити</button> <!-- Кнопка "Відправити"  в оформленні BootStrap  -->
-                            </div>
-                        </form>
-                    </div>
+    <div class="general-container">
+        <div class="container top-container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1 class="title">Скоро відкриття<br>Вкажіть ваш емейл у формі</h1>
+                        <div>
+                            <form action="" method="post" class = "form form-inline text-center">{% csrf_token %}
+                                <div class="form-group">
+                                    <label>Ваш емейл: </label>
+                                    {{ form.email }}
+                                </div>
+                                <div class="form-group">
+                                    <label>Ваше імя: </label>
+                                    {{ form.name }}
+                                </div>
+                                    <button type="submit" class="btn btn-orange">Відправити</button> <!-- Кнопка "Відправити"  в оформленні BootStrap  -->
+                            </form>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
 </body>
 </html>
