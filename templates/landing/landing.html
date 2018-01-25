@@ -23,16 +23,16 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h1 class="title">Скоро відкриття<br>Вкажіть ваш емейл у формі</h1>
                         <div>
-                            <form action="" method="post" class = "form form-inline text-center">{% csrf_token %}
+                            <form action="" method= "post" class = "form form-inline text-center">{% csrf_token %}
                                 <div class="form-group">
                                     <label>Ваш емейл: </label>
-                                    {{ form.email }}
+                                    <input name="{{ form.email.name }}" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Ваше імя: </label>
-                                    {{ form.name }}
+                                    <input name="{{ form.name.name }}" class="form-control">
                                 </div>
-                                    <button type="submit" class="btn btn-orange">Відправити</button> <!-- Кнопка "Відправити"  в оформленні BootStrap  -->
+                                    <button type="submit" class="btn btn-secondary">Відправити</button> <!-- Кнопка "Відправити"  в оформленні BootStrap  -->
                             </form>
                         </div>
                 </div>
