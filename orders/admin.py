@@ -1,25 +1,35 @@
 from django.contrib import admin
-from .models import *#С текущей папки импортировать все модели,которые находятся в файле models
-
-# #Тут реєструємо які моделі можна буде редагувати в адмінці
-#
-# class SubscriberAdmin(admin.ModelAdmin):
-#     list_display = [field.name for field in Subscriber._meta.fields]#Красивіше оформлення ,вивід кожного окремо + ІД
-#     search_fields = ["name","email"]# Пошук юзера по імені і емейлу
-#
-#     #exclude = ["email"]# Не показувати поле
-#     #fields = ["name"]# Показувати поле
-#     #list_filter =  #Сортування юзерів
-#
-#
-#     class Meta:
-#         model = Subscriber
-#
-#
-# admin.site.register(Subscriber, SubscriberAdmin)
+from .models import *
 
 
+class ProductInOrderInline(admin.TabularInline):
+    model = ProductInOrder
+    extra = 0
 
 
+class StatusAdmin (admin.ModelAdmin):
+    list_display = [field.name for field in Status._meta.fields]
+
+    class Meta:
+        model = Status
+
+admin.site.register(Status, StatusAdmin)
 
 
+class OrderAdmin (admin.ModelAdmin):
+    list_display = [field.name for field in Order._meta.fields]
+    inlines = [ProductInOrderInline]
+
+    class Meta:
+        model = Order
+
+admin.site.register(Order, OrderAdmin)
+
+
+class ProductInOrderAdmin (admin.ModelAdmin):
+    list_display = [field.name for field in ProductInOrder._meta.fields]
+
+    class Meta:
+        model = ProductInOrder
+
+admin.site.register(ProductInOrder, ProductInOrderAdmin)
