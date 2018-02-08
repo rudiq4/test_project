@@ -4,7 +4,7 @@ from .models import *
 
 class ProductInOrderInline(admin.TabularInline):
     model = ProductInOrder
-    extra = 0
+    extra = 1
 
 
 class StatusAdmin (admin.ModelAdmin):

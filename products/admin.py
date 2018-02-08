@@ -2,14 +2,14 @@ from django.contrib import admin
 from .models import *
 
 
-class ProductImageInline(admin.TabularInline):
+class ProductImageInline(admin.TabularInline):  # При добавлянні товару добавляєм йому картинку
     model = ProductImage
-    extra = 0
+    extra = 1  # Тільки 1 поле для завантаження картинки
 
 
 class ProductAdmin (admin.ModelAdmin):
     list_display = [field.name for field in Product._meta.fields]
-    inlines = [ProductImageInline]
+    inlines = [ProductImageInline]  # Вкладення /картинки/
 
     class Meta:
         model = Product

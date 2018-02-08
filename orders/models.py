@@ -3,12 +3,12 @@ from products.models import Product
 
 
 class Status(models.Model):
-    name = models.CharField(max_length=24, blank=True, null=True, default=None)#blank-може бути пустим
+    name = models.CharField(max_length=24, blank=True, null=True, default=None)  # blank-може бути пустим
     flag = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __str__(self):#в адмінці
+    def __str__(self):  # в адмінці
         return "Статус %s" % self.name
 
     class Meta:
@@ -17,7 +17,7 @@ class Status(models.Model):
 
 
 class Order(models.Model):
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)#Загальна вартість усіх продуктів
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Загальна вартість усіх продуктів
     customer_name = models.CharField(max_length=64, blank=True, null=True, default=None)
     customer_email = models.EmailField(blank=True, null=True, default=None)
     customer_phone = models.CharField(max_length=48, blank=True, null=True, default=None)
@@ -33,9 +33,9 @@ class Order(models.Model):
 class ProductInOrder(models.Model):
     order = models.ForeignKey(Order, blank=True, null=True, default=None)
     product = models.ForeignKey(Product, blank=True, null=True, default=None)
-    nmb = models.IntegerField(default=1)
-    price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)#Вартість одного товару
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    nmb = models.IntegerField(default=1)  # Кількість товару
+    price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Вартість одиниці товару
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Повна вартість одного товару
     flag = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
