@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .forms import SubscriberForm
+from  django.contrib import auth
+
 
 def landing(request):
 

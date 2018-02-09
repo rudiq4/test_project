@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 
 
-class ProductImageInline(admin.TabularInline):  # При добавлянні товару добавляєм йому картинку
+class ProductImageInline(admin.TabularInline):  # При добавлянні книги добавляєм йому картинку
     model = ProductImage
     extra = 1  # Тільки 1 поле для завантаження картинки
 

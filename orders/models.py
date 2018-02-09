@@ -1,5 +1,6 @@
 from django.db import models
 from products.models import Product
+from django.db.models.signals import post_save
 
 
 class Status(models.Model):
@@ -29,6 +30,13 @@ class Order(models.Model):
     def __str__(self):
         return "Замовлення %s %s" % (self.id, self.status.name)
 
+    class Meta:
+        verbose_name = 'Замовлення'
+        verbose_name_plural = 'Замовлення'
+
+    def save(self, *args, **kwargs):
+        super(Order, self).save(*args, **kwargs)
+
 
 class ProductInOrder(models.Model):
     order = models.ForeignKey(Order, blank=True, null=True, default=None)
@@ -44,5 +52,25 @@ class ProductInOrder(models.Model):
         return "%s" % self.product.name
 
     class Meta:
-        verbose_name = 'Товар'
-        verbose_name_plural = 'Товари'
+        verbose_name = 'Товар в замовленні'
+        verbose_name_plural = 'Товари у замовленні'
+
+    def save(self,*args,**kwargs): # Шаблон для перевизначення
+        price_per_item = self.product.price  # З моделі products беремо вартість конкретної книги і зберіг
+        self.price_per_item = price_per_item
+        self.total_price = self.nmb * self.price_per_item  # к-сть*вартість книги
+        super(ProductInOrder, self).save(*args, **kwargs)
+
+def product_in_order_post_save(sender, instance, created, **kwargs):
+    order = instance.order
+    all_products_in_order = ProductInOrder.objects.filter(order=order, flag =True)
+    order_total_price = 0
+    for item in all_products_in_order:
+        order_total_price += item.total_price
+    instance.order.total_price = order_total_price
+    instance.order.save(force_update=True)
+
+post_save.connect(product_in_order_post_save, sender=ProductInOrder)
+
+
+
