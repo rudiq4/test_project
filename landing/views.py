@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import SubscriberForm
 from  django.contrib import auth
+from products.models import Product
 
 
 def landing(request):
@@ -17,6 +18,10 @@ def landing(request):
 
     return render(request, 'landing/landing.html', locals())
 
+
+def main(request):
+    products = Product.objects.filter(flag=True)
+    return render(request, 'landing/main.html', locals())
 
 
 

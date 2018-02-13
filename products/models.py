@@ -3,9 +3,10 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=64, blank=True, null=True, default=None)  # Назва книги
-    autrhor = models.CharField(max_length=32, blank=True, null=True, default=None)# Автор книги
-    price = models.DecimalField(max_digits=10, decimal_places=2, default=0)# Ціна книги
+    autrhor = models.CharField(max_length=32, blank=True, null=True, default=None) # Автор книги
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0) # Ціна книги
     description = models.TextField(blank=True, null=True, default=None)  # Опис книги
+    flag = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
