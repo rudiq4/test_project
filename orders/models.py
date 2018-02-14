@@ -1,13 +1,12 @@
 from django.db import models
 from products.models import Product
 from django.db.models.signals import post_save
+from core.models.abstract_models import BaseDjangoModel
 
 
-class Status(models.Model):
+class Status(BaseDjangoModel):
     name = models.CharField(max_length=24, blank=True, null=True, default=None)  # blank-може бути пустим
     flag = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __str__(self):  # в адмінці
         return "Статус %s" % self.name
@@ -17,15 +16,14 @@ class Status(models.Model):
         verbose_name_plural = 'Статуси замовлень'
 
 
-class Order(models.Model):
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Загальна вартість усіх продуктів
-    customer_name = models.CharField(max_length=64, blank=True, null=True, default=None)
-    customer_email = models.EmailField(blank=True, null=True, default=None)
-    customer_phone = models.CharField(max_length=48, blank=True, null=True, default=None)
-    customer_address = models.CharField(max_length=128, blank=True, null=True, default=None)
+class Order(BaseDjangoModel):
+    total_price = models.DecimalField(verbose_name='Сумарна ціна',max_digits=10, decimal_places=2, default=0)  # Загальна вартість усіх продуктів
+    customer_name = models.CharField(verbose_name='Імя покупця',max_length=64, blank=True, null=True, default=None)
+    customer_email = models.EmailField(verbose_name='E-mail покупця',blank=True, null=True, default=None)
+    customer_phone = models.CharField(verbose_name='Тел. номер покупця',max_length=48, blank=True, null=True, default=None)
+    customer_address = models.CharField(verbose_name='Адрес покупця',max_length=128, blank=True, null=True, default=None)
     status = models.ForeignKey(Status)
-    created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
 
     def __str__(self):
         return "Замовлення %s %s" % (self.id, self.status.name)
@@ -38,15 +36,13 @@ class Order(models.Model):
         super(Order, self).save(*args, **kwargs)
 
 
-class ProductInOrder(models.Model):
+class ProductInOrder(BaseDjangoModel):
     order = models.ForeignKey(Order, blank=True, null=True, default=None)
     product = models.ForeignKey(Product, blank=True, null=True, default=None)
     nmb = models.IntegerField(default=1)  # Кількість товару
     price_per_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Вартість одиниці товару
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Повна вартість одного товару
     flag = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __str__(self):
         return "%s" % self.product.name
