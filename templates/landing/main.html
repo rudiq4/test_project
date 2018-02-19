@@ -3,17 +3,27 @@
 {% load static %}
 
 {% block content %}
-{#    <div class="section-top">#}
-{#        <img src="{% static 'img/fon.jpg' %}" class="img-responsive">#}
-{#    </div>#}
     <div class="section">
         <div class="container">
             <div class="row">
-                {% for item in products %}
+                {% for item in products_images %}
                     <div class="col-lg-4">
                         <div class="product-item">
-                            {{ item.name }}<br>
-                            {{ item.description }}
+                            <div>
+                                <img src="{{ products_images.image.url }}" class="img-responsive">
+                            </div>
+                            <h2>{{ item.name }}</h2>
+                            <p>
+                                {{ item.description | truncatechars_html:120}}
+                            </p>
+                            <div>
+                                {{ item.price }} UAH
+                            </div>
+                            <div class="add-to-cart-btn">
+                                <button class="btn btn-success">
+                                    Добавити в корзину
+                                </button>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}

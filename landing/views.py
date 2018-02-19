@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import SubscriberForm
 from  django.contrib import auth
-from products.models import Product
+from products.models import *
 
 
 def landing(request):
@@ -20,7 +20,7 @@ def landing(request):
 
 
 def main(request):
-    products = Product.objects.filter(flag=True)
+    products_images = ProductImage.objects.filter(flag=True ,main_picture=True)
     return render(request, 'landing/main.html', locals())
 
 
