@@ -19,7 +19,7 @@ class Product(BaseDjangoModel):
 
 
 class ProductImage(BaseDjangoModel):
-    image = models.ImageField(upload_to='static/media/product_images/')  # Сюди зберігатимуться зобр. книжок
+    image = models.ImageField(upload_to='products_images/')  # Сюди зберігатимуться зобр. книжок
     product = models.ForeignKey(Product, blank=True, null=True, default=None)  # Посилання на саму книгу
     flag = models.BooleanField(default=True)  # Вкл/викл показ картинки товару
     main_picture = models.BooleanField(default=False)
