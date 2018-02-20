@@ -20,7 +20,9 @@ def landing(request):
 
 
 def main(request):
-    products_images = ProductImage.objects.filter(flag=True ,main_picture=True)
+    products_images = ProductImage.objects.filter(flag=True, main_picture=True, product__flag=True)
+    products_images_ukrainian = products_images.filter(product__book_type__id=1)
+    products_images_world = products_images.filter(product__book_type__id=2)
     return render(request, 'landing/main.html', locals())
 
 
