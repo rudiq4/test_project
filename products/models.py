@@ -20,7 +20,8 @@ class Product(BaseDjangoModel):
     autrhor = models.CharField(verbose_name='Автор', max_length=32, blank=True, null=True, default=None)  # Автор книги
     price = models.DecimalField(verbose_name='Ціна', max_digits=10, decimal_places=2, default=0)  # Ціна книги
     description = models.TextField(verbose_name='Опис', blank=True, null=True, default=None)  # Опис книги
-    syte_description = models.TextField(verbose_name='Опис на сайті', blank=True, null=True, default=None) #  Опис книги на сайті
+    syte_description = models.TextField(verbose_name='Опис на сайті', blank=True, null=True, default=None)  # Опис книги
+    #  на сайті
     flag = models.BooleanField(verbose_name='Акт/Деакт', default=True)
 
     def __str__(self):
@@ -43,5 +44,3 @@ class ProductImage(BaseDjangoModel):
     class Meta:
         verbose_name = 'Фото'
         verbose_name_plural = 'Фотографії до товарів'
-
-

@@ -11,10 +11,8 @@ def landing(request):
         print(request.POST)
         print(form.cleaned_data)
         data = form.cleaned_data
-        print (data['name'])
+        print(data['name'])
         new_form = form.save()
-
-
 
     return render(request, 'landing/landing.html', locals())
 
@@ -24,16 +22,6 @@ def main(request):
     products_images_ukrainian = products_images.filter(product__book_type__id=1)
     products_images_world = products_images.filter(product__book_type__id=2)
     return render(request, 'landing/main.html', locals())
-
-
-
-
-
-
-
-
-
-
 
 
 def about(request):

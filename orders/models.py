@@ -17,13 +17,12 @@ class Status(BaseDjangoModel):
 
 
 class Order(BaseDjangoModel):
-    total_price = models.DecimalField(verbose_name='Сумарна ціна',max_digits=10, decimal_places=2, default=0)  # Загальна вартість усіх продуктів
+    total_price = models.DecimalField(verbose_name='Сумарна ціна',max_digits=10, decimal_places=2, default=0)
     customer_name = models.CharField(verbose_name='Імя покупця',max_length=64, blank=True, null=True, default=None)
     customer_email = models.EmailField(verbose_name='E-mail покупця',blank=True, null=True, default=None)
     customer_phone = models.CharField(verbose_name='Тел. номер покупця',max_length=48, blank=True, null=True, default=None)
     customer_address = models.CharField(verbose_name='Адрес покупця',max_length=128, blank=True, null=True, default=None)
     status = models.ForeignKey(Status)
-
 
     def __str__(self):
         return "Замовлення %s %s" % (self.id, self.status.name)
@@ -51,11 +50,12 @@ class ProductInOrder(BaseDjangoModel):
         verbose_name = 'Товар в замовленні'
         verbose_name_plural = 'Товари у замовленні'
 
-    def save(self,*args,**kwargs): # Шаблон для перевизначення
+    def save(self, *args, **kwargs):  # Шаблон для перевизначення
         price_per_item = self.product.price  # З моделі products беремо вартість конкретної книги і зберіг
         self.price_per_item = price_per_item
         self.total_price = self.nmb * self.price_per_item  # к-сть*вартість книги
         super(ProductInOrder, self).save(*args, **kwargs)
+
 
 def product_in_order_post_save(sender, instance, created, **kwargs):
     order = instance.order
@@ -66,7 +66,5 @@ def product_in_order_post_save(sender, instance, created, **kwargs):
     instance.order.total_price = order_total_price
     instance.order.save(force_update=True)
 
+
 post_save.connect(product_in_order_post_save, sender=ProductInOrder)
-
-
-
