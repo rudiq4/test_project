@@ -1,0 +1,21 @@
+<div class="col-lg-4">
+    <div class="product-item">
+        <div>
+            <a href="{% url 'product' item.product.id %}"><!-- Клікабелька картінка-->
+                <img src="{{ item.image.url }}" class="img-responsive">
+            </a>
+        </div>
+        <h2>{{ item.name }}</h2>
+        <p>
+            {{ item.product.description | truncatechars_html:120}}
+        </p>
+        <div>
+            {{ item.product.price }} UAH
+        </div>
+        <div class="add-to-cart-btn">
+            <button class="btn btn-success">
+                Добавити в корзину
+            </button>
+        </div>
+    </div>
+</div>
