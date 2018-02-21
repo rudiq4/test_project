@@ -6,6 +6,8 @@
 
 
     <!--Bootstrap-->
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400&amp;subset=cyrillic-ext" rel="stylesheet">
@@ -21,11 +23,15 @@
 </head>
 <body>
     <div class="wrapper">
-        {% include 'navbar.html' %}
-        {% block content %}
-        {% endblock content %}
-        {% include 'footer.html' %}
+        <div class="wrapper-content">
+            {% include 'navbar.html' %}
+            {% block content %}
+            {% endblock content %}
+        </div>
+
     </div>
+
+{% include 'footer.html' %}
 
    <!-- Bootstrap core JavaScript
     ================================================== -->
