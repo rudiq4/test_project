@@ -12,25 +12,7 @@
                     </h1>
                 </div>
                 {% for item in products_images %}
-                    <div class="col-lg-4">
-                        <div class="product-item">
-                            <div>
-                                <img src="{{ item.image.url }}" class="img-responsive">
-                            </div>
-                                <h2>{{ item.name }}</h2>
-                                    <p>
-                                        {{ item.product.description | truncatechars_html:120}}
-                                    </p>
-                                        <div>
-                                            {{ item.product.price }} UAH
-                                        </div>
-                                    <div class="add-to-cart-btn">
-                                        <button class="btn btn-success">
-                                            Добавити в корзину
-                                    </button>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'landing/shablon.html' %}
                 {% endfor %}
             </div>
         </div>
@@ -44,25 +26,7 @@
                     </h1>
                 </div>
                 {% for item in products_images_ukrainian %}
-                    <div class="col-lg-4">
-                        <div class="product-item">
-                            <div>
-                                <img src="{{ item.image.url }}" class="img-responsive">
-                            </div>
-                                <h2>{{ item.name }}</h2>
-                                    <p>
-                                        {{ item.product.description | truncatechars_html:120}}
-                                    </p>
-                                        <div>
-                                            {{ item.product.price }} UAH
-                                        </div>
-                                    <div class="add-to-cart-btn">
-                                        <button class="btn btn-success">
-                                            Добавити в корзину
-                                    </button>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'landing/shablon.html' %}
                 {% endfor %}
             </div>
         </div>
@@ -76,25 +40,7 @@
                     </h1>
                 </div>
                 {% for item in products_images_world %}
-                    <div class="col-lg-4">
-                        <div class="product-item">
-                            <div>
-                                <img src="{{ item.image.url }}" class="img-responsive">
-                            </div>
-                                <h2>{{ item.name }}</h2>
-                                    <p>
-                                        {{ item.product.description | truncatechars_html:120}}
-                                    </p>
-                                        <div>
-                                            {{ item.product.price }} UAH
-                                        </div>
-                                    <div class="add-to-cart-btn">
-                                        <button class="btn btn-success">
-                                            Добавити в корзину
-                                    </button>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'landing/shablon.html' %}
                 {% endfor %}
             </div>
         </div>
