@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                {% for capture in product.productimage_set.all %}
+                    <img src="{{ capture.image.url }}" class="product-picture">
+                {% endfor %}
+            </div>
+            <div class="col-lg-6">
+                <h1 class="product-name">
+                    {{ product.name }}
+                </h1>
+                <div class="product-author">
+                    Автор : {{ product.autrhor }}
+                </div>
+                <div class="product-price">
+                    <p>
+                        Ціна : {{ product.price }} гривень
+                    </p>
+                </div>
+                <div class="product-desc">
+                    {{ product.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
