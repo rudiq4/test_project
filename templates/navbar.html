@@ -35,7 +35,19 @@
                         <a class="exit-button" href="http://127.0.0.1:8000/logout/">Вихід</a>
                     </li>
                     <li>
-                        <button type="button" class="btn btn-secondary btn-lg" disabled>{{ request.user.username }}</button>
+                        <button type="button" class="btn btn-secondary btn-lg"
+                                disabled>{{ request.user.username }}</button>
+                    </li>
+                    <li>
+                        <div class="basket-container">
+                            <a href="http://127.0.0.1:8000/basket/">Корзина</a>
+                            <div class="basket-item" hidden>
+                                <ul class="">
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
                 {% else %}
                     <li>

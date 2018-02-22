@@ -9,11 +9,11 @@
         <p>
             {{ item.product.description | truncatechars_html:120}}
         </p>
-        <div>
-            {{ item.product.price }} UAH
+        <div class="product-price">
+            {{ item.product.price }} гривень
         </div>
         <div class="add-to-cart-btn">
-            <button class="btn btn-success">
+            <button class="btn btn-info">
                 Добавити в корзину
             </button>
         </div>

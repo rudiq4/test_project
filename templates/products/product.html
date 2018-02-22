@@ -24,7 +24,22 @@
                 <div class="product-desc">
                     {{ product.description }}
                 </div>
-            </div>
+                <div>
+                    <form id="buy_form" class="form-inline">
+                        <div class="form-group">
+                             <input type="number" class="form-control" name="number" id="number">
+                        </div>
+                            <div class="form-group">
+                                <button type="submit" id="submit_btn" class="btn btn-info buy_button"
+                                    data-product_id = "{{ product.id }}"
+                                    data-name = "{{ product.name }}"
+                                    data-price = "{{ product.price }}">
+                                    Купити
+                                </button>
+                            </div>
+                    </form>
+                </div>
         </div>
+    </div>
     </div>
 {% endblock %}
